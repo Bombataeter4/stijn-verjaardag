@@ -73,7 +73,7 @@
   </header>
 
   <main>
-    <video src="videos/WhatsApp Video 2025-08-29 at 10.14.37.mp4" controls></video>
+    <video src="videos/feest.mp4" controls></video>
     <section style="text-align:center; margin:2rem auto;">
     <img src="images/WhatsApp Image 2025-08-29 at 10.10.50.jpeg" alt="Foto Stijn McDonalds" style="max-width:90%; border-radius:14px; border:2px solid #2a2e45; margin:1rem auto; display:block;" />
     <img src="images/WhatsApp Image 2025-08-29 at 10.10.50.jpeg" alt="Foto Stijn McDonalds" style="max-width:90%; border-radius:14px; border:2px solid #2a2e45; margin:1rem auto; display:block;" />
@@ -83,66 +83,73 @@
 </main>
 
   <footer>
-    nigga bitch nigga ahhhhhhhhh nigga
+    Gemaakt met ❤ en GitHub Pages. — Video: <code>videos/feest.mp4</code> (gecomprimeerd aangeraden)
   </footer>
 
   <script>
-    // --- Always-on Party Floaters ---
-    const floaterEmojis = [
-      '🎉','🎂','🎊','🥳','✨','🍰','🧁','🍩','🍫','🍪',
-      '🍕','🍔','🍟','🌭','🌮','🌯','🍜','🍿','🧀','🥨','🥫',
-      '🥤','🥛','🫘','🏳️‍🌈','⚖️','🕊️','🗳️','🤝','🗽'
-    ];
+    // Start animations when DOM is ready
+    window.addEventListener('DOMContentLoaded', () => {
+      // --- Always-on Party Floaters ---
+      const floaterEmojis = [
+        '🎉','🎂','🎊','🥳','✨','🍰','🧁','🍩','🍫','🍪',
+        '🍕','🍔','🍟','🌭','🌮','🌯','🍜','🍿','🧀','🥨','🥫',
+        '🥤','🥛','🫘','🏳️‍🌈','⚖️','🕊️','🗳️','🤝','🗽'
+      ];
 
-    // SVG Non-binary vlag
-    const nbSVG = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='96' viewBox='0 0 16 9'>
-      <rect width='16' height='9' fill='%23fff200'/>
-      <rect y='2.25' width='16' height='2.25' fill='%23ffffff'/>
-      <rect y='4.5' width='16' height='2.25' fill='%23000000'/>
-      <rect y='6.75' width='16' height='2.25' fill='%238a1a9a'/>
-    </svg>`;
-
-    // Simpele soy-melk pak (SVG)
-    const soySVG = `data:image/svg+xml;utf8,
-      <svg xmlns='http://www.w3.org/2000/svg' width='40' height='56' viewBox='0 0 40 56'>
-        <defs>
-          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-            <stop offset='0' stop-color='%23a7ffeb'/>
-            <stop offset='1' stop-color='%2300d4ff'/>
-          </linearGradient>
-        </defs>
-        <rect x='6' y='6' rx='6' ry='6' width='28' height='44' fill='url(%23g)' stroke='%2300a6c7' stroke-width='2'/>
-        <rect x='10' y='2' width='20' height='10' fill='%23b2f5ea' stroke='%2300a6c7' stroke-width='2'/>
-        <text x='20' y='34' font-size='12' text-anchor='middle' fill='%23004655' font-family='Arial' font-weight='bold'>SOY</text>
+      // SVG Non-binary vlag
+      const nbSVG = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='96' viewBox='0 0 16 9'>
+        <rect width='16' height='9' fill='%23fff200'/>
+        <rect y='2.25' width='16' height='2.25' fill='%23ffffff'/>
+        <rect y='4.5' width='16' height='2.25' fill='%23000000'/>
+        <rect y='6.75' width='16' height='2.25' fill='%238a1a9a'/>
       </svg>`;
 
-    const extras = [nbSVG, soySVG];
+      // Simpele soy-melk pak (SVG)
+      const soySVG = `data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' width='40' height='56' viewBox='0 0 40 56'>
+          <defs>
+            <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+              <stop offset='0' stop-color='%23a7ffeb'/>
+              <stop offset='1' stop-color='%2300d4ff'/>
+            </linearGradient>
+          </defs>
+          <rect x='6' y='6' rx='6' ry='6' width='28' height='44' fill='url(%23g)' stroke='%2300a6c7' stroke-width='2'/>
+          <rect x='10' y='2' width='20' height='10' fill='%23b2f5ea' stroke='%2300a6c7' stroke-width='2'/>
+          <text x='20' y='34' font-size='12' text-anchor='middle' fill='%23004655' font-family='Arial' font-weight='bold'>SOY</text>
+        </svg>`;
 
-    function spawnFloater(){
-      const el = document.createElement('span');
-      el.className = 'floater';
-      const useImage = Math.random() < 0.28; // soms vlag/soymelk
-      if(useImage){
-        const img = document.createElement('img');
-        img.src = extras[Math.random()*extras.length|0]; img.width = 44; img.alt = '';
-        el.appendChild(img);
-      } else {
-        el.textContent = floaterEmojis[Math.random()*floaterEmojis.length|0];
+      const extras = [nbSVG, soySVG];
+
+      function spawnFloater(){
+        const el = document.createElement('span');
+        el.className = 'floater';
+        const useImage = Math.random() < 0.28; // soms vlag/soymelk
+        if(useImage){
+          const img = document.createElement('img');
+          img.src = extras[Math.random()*extras.length|0]; img.width = 44; img.alt = '';
+          el.appendChild(img);
+        } else {
+          el.textContent = floaterEmojis[Math.random()*floaterEmojis.length|0];
+        }
+        const xStart = (Math.random()*100).toFixed(2) + 'vw';
+        const xEnd = (Math.random()*100 - 50).toFixed(2) + 'vw';
+        el.style.setProperty('--xStart', xStart);
+        el.style.setProperty('--xEnd', xEnd);
+        el.style.left = xStart;
+        el.style.bottom = '-10vh';
+        el.style.setProperty('--dur', (9 + Math.random()*10).toFixed(2) + 's');
+        document.getElementById('floaters').appendChild(el);
+        setTimeout(()=> el.remove(), 24000);
       }
-      const xStart = (Math.random()*100).toFixed(2) + 'vw';
-      const xEnd = (Math.random()*100 - 50).toFixed(2) + 'vw';
-      el.style.setProperty('--xStart', xStart);
-      el.style.setProperty('--xEnd', xEnd);
-      el.style.left = xStart;
-      el.style.bottom = '-10vh';
-      el.style.setProperty('--dur', (9 + Math.random()*10).toFixed(2) + 's');
-      document.getElementById('floaters').appendChild(el);
-      setTimeout(()=> el.remove(), 22000);
-    }
-    // startburst + continuous spawns
-    for(let i=0;i<48;i++) spawnFloater();
-    setInterval(spawnFloater, 260);
-    setInterval(()=>{ for(let i=0;i<12;i++) spawnFloater(); }, 8000);
+
+      // Eerste burst en daarna continu
+      for(let i=0;i<64;i++) spawnFloater();
+      setInterval(spawnFloater, 220);
+      setInterval(()=>{ for(let i=0;i<14;i++) spawnFloater(); }, 7000);
+
+      // Extra: titel en lijst glitters (CSS-klasse toggle om reflow te forceren)
+      document.querySelector('h1').classList.add('spark');
+    });
   </script>
 </body>
 </html>
