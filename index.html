@@ -30,9 +30,9 @@
       color:var(--text);
       overflow-x:hidden;
     }
-    header{ text-align:center; padding:3rem 1rem; position:relative }
+    header{ text-align:center; padding:3rem 1rem; position:relative; z-index:1 }
     h1{
-      font-size: clamp(2.2rem, 6.5vw, 4.8rem); margin:0 0 1rem; line-height:1.08;
+      font-size: clamp(2.2rem, 6.5vw, 4.5rem); margin:0 0 1rem; line-height:1.08;
       background: var(--rainbow); -webkit-background-clip:text; background-clip:text; color:transparent;
       animation: shine 8s linear infinite, floatTitle 6s ease-in-out infinite;
     }
@@ -50,7 +50,7 @@
     footer{text-align:center; margin:2rem 0 3rem; color:var(--muted)}
 
     /* Flying party bits */
-    #floaters{pointer-events:none; position:fixed; inset:0; overflow:hidden; z-index:9999}
+    #floaters{pointer-events:none; position:fixed; inset:0; overflow:hidden; z-index:0}
     .floater{position:absolute; font-size:clamp(24px, 3.5vw, 42px); opacity:.95; filter:drop-shadow(0 6px 10px rgba(0,0,0,.35)); will-change:transform,opacity; animation: drift var(--dur) linear forwards;}
     @keyframes drift{
       0%{ transform:translate(var(--xStart), 110vh) rotate(0deg); opacity:0 }
@@ -72,7 +72,7 @@
   </header>
 
   <main>
-    <video src="videos/WhatsApp Video 2025-08-29 at 10.14.37.mp4" controls></video> 
+    <video src="videos/WhatsApp Video 2025-08-29 at 10.14.37.mp4" controls></video>
 
     <section style="text-align:center; margin:2rem auto;">
       <img src="images/WhatsApp Image 2025-08-29 at 10.10.50.jpeg" alt="Foto Stijn" style="max-width:90%; border-radius:14px; border:2px solid #2a2e45; margin:1rem auto; display:block;" />
@@ -82,7 +82,7 @@
   </main>
 
   <footer>
-    Gemaakt met ❤ en GitHub Pages. — Video: <code>videos/WhatsApp Video 2025-08-29 at 10.14.37.mp4</code>
+    Gemaakt met ❤ en GitHub Pages.
   </footer>
 
   <script>
@@ -118,8 +118,7 @@
       function spawnFloater(){
         const el = document.createElement('span');
         el.className = 'floater';
-        const useImage = Math.random() < 0.28;
-        if(useImage){
+        if(Math.random() < 0.28){
           const img = document.createElement('img');
           img.src = extras[Math.random()*extras.length|0]; img.width = 44; img.alt = '';
           el.appendChild(img);
