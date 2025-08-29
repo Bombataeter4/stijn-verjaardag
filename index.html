@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gefeliciteerd, Stijn van der Eijk! 🎉</title>
+  <meta name="description" content="Verjaardagspagina voor Stijn van der Eijk – met leuke feitjes en een speciale video." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0f1221;
+      --card: #171a2b;
+      --text: #eef1ff;
+      --muted: #a6b0d4;
+      --accent: #7c4dff;
+      --accent-2: #00d4ff;
+      --rainbow: linear-gradient(90deg, #ff004c, #ff8a00, #ffee00, #00d300, #00c3ff, #6a00ff);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 800px at 10% -5%, #1a1d33 0%, var(--bg) 40%),
+        radial-gradient(1000px 600px at 90% -10%, #162044 0%, var(--bg) 50%),
+        var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    header{ text-align:center; padding:3rem 1rem; position:relative }
+    h1{
+      font-size: clamp(2.2rem, 6.5vw, 4.5rem); margin:0 0 1rem; line-height:1.08;
+      background: var(--rainbow); -webkit-background-clip:text; background-clip:text; color:transparent;
+      animation: shine 8s linear infinite;
+    }
+    @keyframes shine{ 0%{filter:hue-rotate(0)} 100%{filter:hue-rotate(360deg)} }
+    ul{list-style:disc; padding-left:1.5rem; text-align:left; max-width:720px; margin:1rem auto; color:var(--muted); font-size:clamp(1rem,2.2vw,1.2rem)}
+    main{ position:relative }
+    video{width:100%; max-width:900px; margin:2rem auto; display:block; border-radius:16px; border:1px solid #2a2e45; box-shadow:0 20px 40px rgba(0,0,0,.35)}
+    footer{text-align:center; margin:2rem 0 3rem; color:var(--muted)}
+
+    /* Flying party bits */
+    #floaters{pointer-events:none; position:fixed; inset:0; overflow:hidden; z-index:1}
+    .floater{position:absolute; font-size:28px; opacity:.95; filter:drop-shadow(0 6px 10px rgba(0,0,0,.35)); will-change:transform,opacity}
+    @keyframes drift{
+      0%{ transform:translate(var(--xStart), 110vh) rotate(0deg); opacity:0 }
+      10%{opacity:1}
+      100%{ transform:translate(var(--xEnd), -10vh) rotate(360deg); opacity:0 }
+    }
+    .floater{ animation: drift var(--dur) linear forwards; }
+
+    /* CTA toggle */
+    .party-toggle{ position:fixed; right:1rem; bottom:1rem; z-index:2 }
+    .party-toggle button{ appearance:none; border:none; padding:.8rem 1rem; border-radius:14px; font-weight:700; cursor:pointer; color:white; background:linear-gradient(135deg,var(--accent),var(--accent-2)); box-shadow:0 12px 30px rgba(0,212,255,.3) }
+  </style>
+</head>
+<body>
+  <div id="floaters"></div>
+  <div class="party-toggle"><button id="partyBtn">Party mode: aan/uit</button></div>
+  <header>
+    <h1>Gefeliciteerd, Stijn van der Eijk! 🎉</h1>
+    <ul>
+      <li>Stijn drinkt niet.</li>
+      <li>Stijn eet alleen maar processed food.</li>
+      <li>Drinkt alleen sojamelk.</li>
+      <li>Hij is de grootste liberal aller tijden.</li>
+    </ul>
+  </header>
+
+  <main>
+    <video src="videos/WhatsApp Video 2025-08-29 at 10.14.37.mp4" controls poster="" ></video>
+  </main>
+
+  <footer>
+    Gemaakt met ❤ en GitHub Pages.
+  </footer>
+  <footer>
+    Gemaakt met ❤ en GitHub Pages.
+  </footer>
+
+  <script>
+    // --- Party floaters ---
+    const floaterEmojis = [
+      '🎉','🎂','🎊','🥳','✨','🍰','🍩','🍫','🍪','🍕','🍔','🍟','🌭','🥤','🧃','🥛','🫘','🗳️','🕊️','⚖️','🤝','🗽','🏳️‍🌈','🔥'
+    ];
+
+    // SVG Non-binary vlag (inline as data URL)
+    const nbSVG = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='96' viewBox='0 0 16 9'>
+      <rect width='16' height='9' fill='%23fff200'/>
+      <rect y='2.25' width='16' height='2.25' fill='%23ffffff'/>
+      <rect y='4.5' width='16' height='2.25' fill='%23000000'/>
+      <rect y='6.75' width='16' height='2.25' fill='%238a1a9a'/>
+    </svg>`;
+
+    const extras = [nbSVG];
+    let partyOn = true;
+
+    function spawnFloater(){
+      if(!partyOn) return;
+      const el = document.createElement('span');
+      el.className = 'floater';
+      const useImage = Math.random() < 0.18; // soms de non-binary vlag
+      if(useImage){
+        const img = document.createElement('img');
+        img.src = extras[0]; img.width = 40; img.height = 24; img.alt = 'Non-binary vlag';
+        el.appendChild(img);
+      } else {
+        el.textContent = floaterEmojis[Math.random()*floaterEmojis.length|0];
+      }
+      const xStart = (Math.random()*100).toFixed(2) + 'vw';
+      const xEnd = (Math.random()*100 - 50).toFixed(2) + 'vw';
+      el.style.setProperty('--xStart', xStart);
+      el.style.setProperty('--xEnd', xEnd);
+      el.style.left = xStart;
+      el.style.bottom = '-10vh';
+      el.style.setProperty('--dur', (10 + Math.random()*12).toFixed(2) + 's');
+      document.getElementById('floaters').appendChild(el);
+      setTimeout(()=> el.remove(), 24000);
+    }
+    // continuous spawns
+    setInterval(spawnFloater, 400);
+
+    // Toggle button
+    document.getElementById('partyBtn').addEventListener('click', ()=>{ partyOn = !partyOn; });
+  </script>
+</body>
+</html>
