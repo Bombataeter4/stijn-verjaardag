@@ -45,19 +45,18 @@
     ul li:nth-child(3){animation-delay:1.2s}
     ul li:nth-child(4){animation-delay:1.8s}
 
-    main{ position:relative }
+    main{ position:relative; z-index:1 }
     video{width:100%; max-width:900px; margin:2rem auto; display:block; border-radius:16px; border:1px solid #2a2e45; box-shadow:0 20px 40px rgba(0,0,0,.35)}
     footer{text-align:center; margin:2rem 0 3rem; color:var(--muted)}
 
     /* Flying party bits */
     #floaters{pointer-events:none; position:fixed; inset:0; overflow:hidden; z-index:9999}
-    .floater{position:absolute; font-size:clamp(24px, 3.5vw, 42px); opacity:.95; filter:drop-shadow(0 6px 10px rgba(0,0,0,.35)); will-change:transform,opacity}
+    .floater{position:absolute; font-size:clamp(24px, 3.5vw, 42px); opacity:.95; filter:drop-shadow(0 6px 10px rgba(0,0,0,.35)); will-change:transform,opacity; animation: drift var(--dur) linear forwards;}
     @keyframes drift{
       0%{ transform:translate(var(--xStart), 110vh) rotate(0deg); opacity:0 }
       10%{opacity:1}
       100%{ transform:translate(var(--xEnd), -10vh) rotate(360deg); opacity:0 }
     }
-    .floater{ animation: drift var(--dur) linear forwards; }
   </style>
 </head>
 <body>
@@ -73,30 +72,27 @@
   </header>
 
   <main>
-    <video src="videos/feest.mp4" controls></video>
-    <section style="text-align:center; margin:2rem auto;">
-    <img src="images/WhatsApp Image 2025-08-29 at 10.10.50.jpeg" alt="Foto Stijn McDonalds" style="max-width:90%; border-radius:14px; border:2px solid #2a2e45; margin:1rem auto; display:block;" />
-    <img src="images/WhatsApp Image 2025-08-29 at 10.10.50.jpeg" alt="Foto Stijn McDonalds" style="max-width:90%; border-radius:14px; border:2px solid #2a2e45; margin:1rem auto; display:block;" />
-    <img src="images/WhatsApp Image 2025-08-29 at 10.10.50.jpeg" alt="Foto Stijn McDonalds" style="max-width:90%; border-radius:14px; border:2px solid #2a2e45; margin:1rem auto; display:block;" />
-  </section>
+    <video src="videos/WhatsApp Video 2025-08-29 at 10.14.37.mp4" controls></video>
 
-</main>
+    <section style="text-align:center; margin:2rem auto;">
+      <img src="images/WhatsApp Image 2025-08-29 at 10.10.50.jpeg" alt="Foto Stijn" style="max-width:90%; border-radius:14px; border:2px solid #2a2e45; margin:1rem auto; display:block;" />
+      <img src="images/WhatsApp Image 2025-08-29 at 10.10.50.jpeg" alt="Foto Stijn" style="max-width:90%; border-radius:14px; border:2px solid #2a2e45; margin:1rem auto; display:block;" />
+      <img src="images/WhatsApp Image 2025-08-29 at 10.10.50.jpeg" alt="Foto Stijn" style="max-width:90%; border-radius:14px; border:2px solid #2a2e45; margin:1rem auto; display:block;" />
+    </section>
+  </main>
 
   <footer>
-    Gemaakt met ❤ en GitHub Pages. — Video: <code>videos/feest.mp4</code> (gecomprimeerd aangeraden)
+    Gemaakt met ❤ en GitHub Pages. — Video: <code>videos/WhatsApp Video 2025-08-29 at 10.14.37.mp4</code>
   </footer>
 
   <script>
-    // Start animations when DOM is ready
     window.addEventListener('DOMContentLoaded', () => {
-      // --- Always-on Party Floaters ---
       const floaterEmojis = [
         '🎉','🎂','🎊','🥳','✨','🍰','🧁','🍩','🍫','🍪',
         '🍕','🍔','🍟','🌭','🌮','🌯','🍜','🍿','🧀','🥨','🥫',
         '🥤','🥛','🫘','🏳️‍🌈','⚖️','🕊️','🗳️','🤝','🗽'
       ];
 
-      // SVG Non-binary vlag
       const nbSVG = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='96' viewBox='0 0 16 9'>
         <rect width='16' height='9' fill='%23fff200'/>
         <rect y='2.25' width='16' height='2.25' fill='%23ffffff'/>
@@ -104,7 +100,6 @@
         <rect y='6.75' width='16' height='2.25' fill='%238a1a9a'/>
       </svg>`;
 
-      // Simpele soy-melk pak (SVG)
       const soySVG = `data:image/svg+xml;utf8,
         <svg xmlns='http://www.w3.org/2000/svg' width='40' height='56' viewBox='0 0 40 56'>
           <defs>
@@ -123,7 +118,7 @@
       function spawnFloater(){
         const el = document.createElement('span');
         el.className = 'floater';
-        const useImage = Math.random() < 0.28; // soms vlag/soymelk
+        const useImage = Math.random() < 0.28;
         if(useImage){
           const img = document.createElement('img');
           img.src = extras[Math.random()*extras.length|0]; img.width = 44; img.alt = '';
@@ -142,13 +137,9 @@
         setTimeout(()=> el.remove(), 24000);
       }
 
-      // Eerste burst en daarna continu
       for(let i=0;i<64;i++) spawnFloater();
       setInterval(spawnFloater, 220);
       setInterval(()=>{ for(let i=0;i<14;i++) spawnFloater(); }, 7000);
-
-      // Extra: titel en lijst glitters (CSS-klasse toggle om reflow te forceren)
-      document.querySelector('h1').classList.add('spark');
     });
   </script>
 </body>
